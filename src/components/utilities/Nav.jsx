@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import { Menu, X } from "react-feather";
-import useGlobalContext from "../../contexts/appContext";
+import React, { useState } from 'react';
+import { Menu, X } from 'react-feather';
+import useGlobalContext from '../../contexts/appContext';
 
 export default function Nav() {
-  const { isDesktop } = useGlobalContext();
-  const [navOpen, setNavOpen] = useState(false);
-  return (
+	const { isDesktop, setTerm, getSearchResults } = useGlobalContext();
+	const [navOpen, setNavOpen] = useState(false);
+	return (
 		<nav className="fixed inset-x-0 top-0 z-20">
 			<div
 				className={`top-nav- flex items-center gap-8 ${
@@ -20,7 +20,13 @@ export default function Nav() {
 					)}
 					<img src="./img/logo.svg" alt="logo" />
 				</div>
-				<div className={`flex ${isDesktop ? 'flex-1' : ''} gap-4 items-center`}>
+				<form
+					onSubmit={(e) => {
+						e.preventDefault();
+						getSearchResults(e);
+					}}
+					className={`flex ${isDesktop ? 'flex-1' : ''} gap-4 items-center`}
+				>
 					<img
 						src="./img/search.png"
 						className={isDesktop ? 'w-4 h-4' : 'w-6 h-6'}
@@ -29,11 +35,12 @@ export default function Nav() {
 						<input
 							className="bg-transparent placeholder:text-[rgb(255,255,255,0.25)]"
 							placeholder="Search"
+							onChange={(e) => setTerm(e.target.value)}
 						/>
 					) : (
 						''
 					)}
-				</div>
+				</form>
 			</div>
 			{isDesktop ? (
 				<div className="absolute top-[100%] left-0 side-nav- flex flex-col gap-10 items-center w-20">

@@ -5,8 +5,8 @@ import { Swiper } from "swiper/react";
 
 export default function Slideshow({ title, children }) {
   return (
-		<section className="my-6">
-			<h2 className="text-[2rem] font-semibold py-2">{title}</h2>
+		<section className="my-6 px-4 md:px-0">
+			<h2 className="subtitle py-2">{title}</h2>
 			<Swiper
 				slidesPerView={'auto'}
 				spaceBetween={30}

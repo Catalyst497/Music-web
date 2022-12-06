@@ -11,3 +11,6 @@ input:focus {
 	@apply outline-none;
 	
 }
+.subtitle {
+	@apply md:text-[2rem] font-semibold text-[1.2rem] 
+}
