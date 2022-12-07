@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'react-feather';
+import { Link } from 'react-router-dom';
 import useGlobalContext from '../../contexts/appContext';
 
 export default function Nav() {
 	const { isDesktop, setTerm, getSearchResults } = useGlobalContext();
 	const [navOpen, setNavOpen] = useState(false);
+
+	// Function to Nav when a nav item is clicked
+	const navItemClicked = () => setNavOpen(false)
 	return (
 		<nav className="fixed inset-x-0 top-0 z-20">
 			<div
@@ -45,9 +49,15 @@ export default function Nav() {
 			{isDesktop ? (
 				<div className="absolute top-[100%] left-0 side-nav- flex flex-col gap-10 items-center w-20">
 					<div className="flex flex-col gap-4 bg-[#1A1E1F] py-4 px-2 rounded-[2rem] items-center">
-						<img src="./img/Home.png" alt="Home" />
-						<img src="./img/playlist (1).png" alt="playlist" />
-						<img src="./img/videos.png" alt="videos" />
+						<Link to={'/'}>
+							<img src="./img/Home.png" alt="Home" title="Home" />
+						</Link>
+						<Link to={'/tomorrowstunes'}>
+							<img src="./img/playlist (1).png" alt="playlist" title="Album" />
+						</Link>
+						<Link to={'/collections'}>
+							<img src="./img/videos.png" alt="videos" title="Collections" />
+						</Link>
 						<img src="./img/radio.png" alt="radio" />
 					</div>
 					<div className="flex flex-col gap-4 bg-[#1A1E1F] py-4 px-2 rounded-[2rem] items-center">
@@ -68,18 +78,33 @@ export default function Nav() {
 						<X size={16} className="text-white" />
 					</div>
 					<ul>
-						<li className="flex items-center gap-4 p-6 text-white">
+						<Link
+							to={'/'}
+							title="Home"
+							onClick={navItemClicked}
+							className="flex items-center gap-4 p-6 text-white"
+						>
 							<img src="./img/Home.png" alt="" />
 							Home
-						</li>
-						<li className="flex items-center gap-4 p-6">
+						</Link>
+						<Link
+							to={'/tomorrowstunes'}
+							title="Album"
+							onClick={navItemClicked}
+							className="flex items-center gap-4 p-6"
+						>
 							<img src="./img/Playlist (1).png" alt="" />
 							My Colletions
-						</li>
-						<li className="flex items-center gap-4 p-6">
+						</Link>
+						<Link
+							to={'/collections'}
+							title="Collections"
+							onClick={navItemClicked}
+							className="flex items-center gap-4 p-6"
+						>
 							<img src="./img/videos.png" alt="" />
 							Music Videos
-						</li>
+						</Link>
 						<li className="flex items-center gap-4 p-6">
 							<img src="./img/radio.png" alt="" />
 							Radio

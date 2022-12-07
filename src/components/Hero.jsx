@@ -16,9 +16,9 @@ export default function Main() {
 							All mine, Lie again, Petty call me everyday, Out of time, No love,
 							Bad habit, and so much more
 						</div>
-						<div className="flex items-center gap-4">
+						<div className="flex items-center gap-4 pt-4">
 							<img src="./img/Likers.png" alt="" />
-							<div className="flex items-center gap-2 mt-4 md:mt-0">
+							<div className="flex items-center gap-2 md:mt-0">
 								<img src="./img/Heart.png" alt="" className="w-4 h-4" /> 33k
 								Likes
 							</div>
